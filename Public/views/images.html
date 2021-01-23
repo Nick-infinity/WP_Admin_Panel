@@ -1,0 +1,56 @@
+<h2>Images</h2>
+<hr />
+
+<div class="row">
+    <div class="co=lg-3">
+        <h4>Add a Wallpaper</h4>
+        <form id="image-form">
+
+            <div class="form-group">
+                <label for="category">Select Category</label>
+                <select id="category" class="form-control">
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" />
+                <div class="invalid-feedback">
+                    Please enter title
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="desc">Description</label>
+                <input type="text" class="form-control" id="desc" />
+                <div class="invalid-feedback">
+                    Please enter description
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="wallpaper">Wallpaper</label>
+                <input type="file" class="form-control" id="wallpaper" />
+
+                <div class="invalid-feedback">
+                    Please choose a valid image
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="progress">
+                    <div class="progress-bar" id="progress" style="width:0%">0%</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" id="btn-save" class="btn btn-primary">Save Wallpaper</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-lg-9">
+
+    </div>
+</div>
