@@ -1,7 +1,7 @@
 var firebaseConfig = {
     apiKey: "AIzaSyDSaxI_tBQSACsQ3V_kynTa4MmtvoCcSc0",
     authDomain: "wallpaperapp-9064a.firebaseapp.com",
-    databaseURL: "https://wallpaperapp-9064a-default-rtdb.firebaseio.com/",
+    databaseURL: "https://wallpaperapp-9064a-default-rtdb.firebaseio.com",
     projectId: "wallpaperapp-9064a",
     storageBucket: "wallpaperapp-9064a.appspot.com",
     messagingSenderId: "698856777079",
