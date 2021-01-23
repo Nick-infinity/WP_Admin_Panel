@@ -51,23 +51,23 @@
         </form>
     </div>
     <div class="col-lg-9">
-
+        <img id="img-wallpaper" width="800" height="400" />
     </div>
 </div>
 
 <script>
-    function previewWallpaper(thumbnail){
-        if(thumbnail.files && thumbnail.files[0]){
-            var reader = new FileReader(); 
+    function previewWallpaper(thumbnail) {
+        if (thumbnail.files && thumbnail.files[0]) {
+            var reader = new FileReader();
 
-            reader.onload = function(e){
+            reader.onload = function (e) {
                 $("#img-wallpaper").attr('src', e.target.result);
             }
             reader.readAsDataURL(thumbnail.files[0]);
         }
     }
 
-    $("#wallpaper").change(function(){
+    $("#wallpaper").change(function () {
         previewWallpaper(this);
     });
 </script>
