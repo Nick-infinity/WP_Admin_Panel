@@ -26,3 +26,12 @@ $("#btn-login").click(function()
         console.log(errorMessage);
     });
 });
+
+function swtichView(view){
+    $.get({
+        url:view,
+        cache: false,
+    }).then(function(data){
+$("#container").html(data);
+    });
+}
