@@ -54,3 +54,20 @@
 
     </div>
 </div>
+
+<script>
+    function previewWallpaper(thumbnail){
+        if(thumbnail.files && thumbnail.files[0]){
+            var reader = new FileReader(); 
+
+            reader.onload = function(e){
+                $("#img-wallpaper").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(thumbnail.files[0]);
+        }
+    }
+
+    $("#wallpaper").change(function(){
+        previewWallpaper(this);
+    });
+</script>
