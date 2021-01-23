@@ -112,6 +112,7 @@
             if (snapshot.exists()) {
                 $("#result").attr("class", "alert alert-danger");
                 $("#result").html("Category already exist");
+                
                 resetForm();
             } else {
                 //1. upload the selected thumbnail to firebase storage
@@ -152,7 +153,7 @@
                                     $("#result").attr("class", "alert alert-success");
                                     $("#result").html("Category added");
                                 }
-
+                                resetForm();
                             });
                         });
                     }
@@ -164,4 +165,11 @@
         });
 
     });
+
+
+    function resetForm() {
+        $("#category-form")[0].reset();
+        $("#selected-thumbnail").fadeOut();
+        $("#upload-progress").html("Completed");
+    }
 </script>
