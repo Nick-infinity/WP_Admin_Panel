@@ -82,5 +82,38 @@
     });
 
 
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+
+    $("#btn-save").click(function () {
+        $("#tite").removeClass("is-invalid");
+        $("#desc").removeClass("is-invalid");
+        $("#wallpaper").removeClass("is-invalid");
+
+        var title = $("#title").val();
+        var desc = $("#desc").val();
+        var wallpaper = $("#wallpaper").prop("files")[0];
+
+        if (!title) {
+            $("#title").addClass("is-invalid");
+            return;
+        }
+
+        if (!desc) {
+            $("#desc").addClass("is-invalid");
+            return;
+        }
+
+        if (!wallpaper) {
+            $("#wallpaper").addClass("is-invalid");
+            return;
+        }
+
+        if ($.inArray(wallpaper["type"], validImageTypes) < 0) {
+            $("#wallpaper").addClass("is-invalid");
+            return;
+        }
+    });
+
+
 
 </script>
