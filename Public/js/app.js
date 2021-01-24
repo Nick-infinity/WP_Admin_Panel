@@ -7,19 +7,17 @@ var firebaseConfig = {
     messagingSenderId: "698856777079",
     appId: "1:698856777079:web:eae7821b1d96a84ecfed72",
     measurementId: "G-BSB9T0S0KS"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  //store the user for next session 
-  firebase.auth.Auth.Persistence.LOCAL;
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+//store the user for next session 
+firebase.auth.Auth.Persistence.LOCAL;
 
-$("#btn-login").click(function()
-{
+$("#btn-login").click(function () {
     var email = $("#email").val();
     var password = $("#password").val();
-    var result = firebase.auth().signInWithEmailAndPassword(email,password);
-    result.catch(function(error)
-    {
+    var result = firebase.auth().signInWithEmailAndPassword(email, password);
+    result.catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode);
@@ -27,11 +25,12 @@ $("#btn-login").click(function()
     });
 });
 
-function swtichView(view){
+
+function swtichView(view) {
     $.get({
-        url:view,
+        url: view,
         cache: false,
-    }).then(function(data){
-$("#container").html(data);
+    }).then(function (data) {
+        $("#container").html(data);
     });
 }
