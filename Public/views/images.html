@@ -2,8 +2,10 @@
 <hr />
 
 <div class="row">
-    <div class="co=lg-3">
+    <div class="col-lg-3">
+
         <h4>Add a Wallpaper</h4>
+
         <form id="image-form">
 
             <div class="form-group">
@@ -49,7 +51,9 @@
             </div>
 
         </form>
+
     </div>
+
     <div class="col-lg-9">
         <img id="img-wallpaper" width="800" height="400" />
     </div>
@@ -71,21 +75,19 @@
         previewWallpaper(this);
     });
 
-    //load cat. and upload image
-
     var dbCategories = firebase.database().ref("categories");
-    dbCategories.once("value").then(function (categories) {
-        categories.forEach(function (category) {
 
+    dbCategories.once("value").then(function (categories) {
+
+        categories.forEach(function (category) {
             $("#category").append("<option value='" + category.key + "'>" + category.key + "</option>");
         });
     });
 
-
     var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
     $("#btn-save").click(function () {
-        $("#tite").removeClass("is-invalid");
+        $("#title").removeClass("is-invalid");
         $("#desc").removeClass("is-invalid");
         $("#wallpaper").removeClass("is-invalid");
 
@@ -112,8 +114,58 @@
             $("#wallpaper").addClass("is-invalid");
             return;
         }
+
+        var category = $("#category").val();
+        var name = wallpaper["name"];
+
+        var ext = name.substring(name.lastIndexOf("."), name.length);
+
+        var imagename = new Date().getTime();
+
+        var storageRef = firebase.storage().ref(category + "/" + imagename + ext);
+
+        var uploadTask = storageRef.put(wallpaper);
+
+        uploadTask.on("state_changed",
+            function progress(snapshot) {
+                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                $("#progress").html(Math.round(percentage) + "%");
+                $("#progress").attr("style", "width: " + percentage + "%");
+            },
+
+            function error(err) {
+
+            },
+
+            function complete() {
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+
+
+                    // we need unique imageid
+                    var database = firebase.database().ref("images").child(category);
+
+                    var imageid = database.push().key;
+
+                    var image = {
+                        "url": downloadURL,
+                        "title": title,
+                        "desc": desc
+                    };
+
+                    // saving unique imageid
+                    database.child(imageid).set(image, function (err) {
+                        alert("Image Saved");
+                        resetForm();
+                    });
+                });
+            }
+        );
+
     });
 
-
-
+    function resetForm() {
+        $("#image-form")[0].reset();
+        $("#img-wallpaper").attr("src", "");;
+        $("#progress").html("Completed");
+    }
 </script>
