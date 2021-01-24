@@ -71,7 +71,9 @@
         $("#btn-logout").click(function () {
 
             //sign out 
-            window.location.href = '/index.html';
+            firebase.auth().signOut();
+            location.href = '/index.html';
+            console.location("User Signed Out");
         });
 
     </script>

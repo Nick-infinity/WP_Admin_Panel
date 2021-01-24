@@ -11,7 +11,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 //store the user for next session 
-firebase.auth.Auth.Persistence.LOCAL;
+firebase.auth.Auth.Persistence.SESSION;
 
 $("#btn-login").click(function () {
     var email = $("#email").val();
