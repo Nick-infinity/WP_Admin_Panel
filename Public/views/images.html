@@ -70,4 +70,17 @@
     $("#wallpaper").change(function () {
         previewWallpaper(this);
     });
+
+    //load cat. and upload image
+
+    var dbCategories = firebase.database().ref("categories");
+    dbCategories.once("value").then(function (categories) {
+        categories.forEach(function (category) {
+
+            $("#category").append("<option value='" + category.key + "'>" + category.key + "</option>");
+        });
+    });
+
+
+
 </script>
