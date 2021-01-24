@@ -20,7 +20,7 @@
             <h1>Wallpaper App Admin</h1>
             <form id="login-form">
                 <div class="form-group">
-                    <label for="email">‎‎‎‎‎‏‏‎Email ‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎ ‎‏‏‎  ‎‏‏‎</label>
+                    <label for="email">‎‎‎‎‎‏‏‎Email ‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎</label>
                     <input type="email" id="email" class="form-control/>" </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -36,6 +36,12 @@
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 // User is signed in.
+
+                // store email to pass to admin page
+                var email = $("#email").val();
+                localStorage.setItem("storageName", email);
+
+                // go to admin page
                 window.location.href = "admin.html";
 
             }

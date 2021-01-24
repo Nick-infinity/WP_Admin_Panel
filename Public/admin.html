@@ -23,7 +23,7 @@
             <div class="dropdown navbar-right">
                 <button id="user-email" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    admin@gmail.com
+                    sample
                 </button>
                 <div class="dropdown-menu" aria-labelledby="user-email">
                     <a class="dropdown-item" id="btn-logout" href="#">
@@ -67,6 +67,12 @@
                 window.location.href = "index.html";
             }
         });
+
+        // retrieving user email from index & setting in dropdown_button
+        window.onload = function () {
+            var storedEmail = localStorage.getItem("storageName")
+            $('#user-email').text(storedEmail);
+        }
 
         $("#btn-logout").click(function () {
 
