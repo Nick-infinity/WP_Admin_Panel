@@ -22,6 +22,7 @@ $("#btn-login").click(function () {
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
+        alert("Invalid email/password");
     });
 });
 
